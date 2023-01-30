@@ -55,3 +55,10 @@ local conceallevel = vim.o.conceallevel > 0 and vim.o.conceallevel or 3
 map("n", "<leader>Uc", function()
   Util.toggle("conceallevel", false, { 0, conceallevel })
 end, { desc = "Toggle Conceal" })
+
+map("n", "<A-j>", ":m .+1<cr>==", { desc = "Move down", silent = true })
+map("v", "<A-j>", ":m '>+1<cr>gv=gv", { desc = "Move down", silent = true })
+map("i", "<A-j>", "<Esc>:m .+1<cr>==gi", { desc = "Move down", silent = true })
+map("n", "<A-k>", ":m .-2<cr>==", { desc = "Move up", silent = true })
+map("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move up", silent = true })
+map("i", "<A-k>", "<Esc>:m .-2<cr>==gi", { desc = "Move up", silent = true })
