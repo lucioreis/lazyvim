@@ -31,4 +31,21 @@ return {
       end,
     },
   },
+  {
+    "ahmedkhalf/project.nvim",
+    ft = "alpha",
+    keys = {
+      {
+        "<leader>fP",
+        function()
+          require("telescope").extensions.projects.projects({})
+        end,
+        desc = "Projects",
+        mode = "n",
+      },
+    },
+    config = function()
+      require("telescope").load_extension("projects")
+    end,
+  },
 }
