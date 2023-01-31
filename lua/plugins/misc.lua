@@ -2,6 +2,7 @@ return {
   { "ggandor/flit.nvim", enabled = false },
   { "ggandor/leap.nvim", enabled = false },
   { "akinsho/bufferline.nvim", enabled = false },
+  { "windwp/nvim-spectre", enabled = false },
 
   -- add jsonls and schemastore ans setup treesitter for json, json5 and jsonc
   { import = "lazyvim.plugins.extras.lang.json" },
@@ -56,5 +57,20 @@ return {
       },
     },
     cmd = "Neogit",
+  },
+  {
+    "andymass/vim-matchup",
+    event = "BufReadPost",
+    config = function()
+      vim.g.matchup_matchparen_offscreen = { method = "status_manual" }
+    end,
+    enabled = true,
+  },
+  {
+    "Wansmer/treesj",
+    keys = {
+      { "<leader>j", "<cmd>TSJToggle<cr>", desc = "Join Toggle" },
+    },
+    opts = { use_default_keymaps = false, max_join_length = 150 },
   },
 }

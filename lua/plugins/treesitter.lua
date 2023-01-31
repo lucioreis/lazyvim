@@ -1,15 +1,31 @@
 return {
   {
     "p00f/nvim-ts-rainbow",
-    event = "BufReadPost",
+    event = "BufReadPre",
   },
   {
     "windwp/nvim-ts-autotag",
-    event = "BufReadPost",
+    event = "BufReadPre",
   },
   {
     "JoosepAlviste/nvim-ts-context-commentstring",
-    event = "BufReadPost",
+    event = "BufReadPre",
+  },
+  {
+    "mfussenegger/nvim-treehopper",
+    keys = { { "m", mode = { "o", "x" } } },
+    config = function()
+      vim.cmd([[
+        omap     <silent> m :<C-U>lua require('tsht').nodes()<CR>
+        xnoremap <silent> m :lua require('tsht').nodes()<CR>
+      ]])
+    end,
+  },
+
+  {
+    "nvim-treesitter/nvim-treesitter-context",
+    event = "BufReadPre",
+    config = true,
   },
   {
     "nvim-treesitter/nvim-treesitter",
@@ -30,6 +46,10 @@ return {
       },
       indent = { enable = true, disable = { "yaml", "python" } },
       autotag = { enable = true },
+      matchup = {
+        enable = true, -- mandatory, false will disable the whole extension
+        disable = { "c", "ruby" }, -- optional, list of language that will be disabled
+      },
       textobjects = {
 
         select = {
