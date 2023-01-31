@@ -48,8 +48,9 @@ return {
       { "sindrets/diffview.nvim" },
       { "nvim-lua/plenary.nvim" },
     },
+    keys = { { "<leader>gn", "<cmd>Neogit<cr>", desc = "Neogit" } },
     opts = {
-      disable_commit_confirmation = true,
+      disable_commit_confirmation = false,
       integrations = {
         diffview = true,
       },
