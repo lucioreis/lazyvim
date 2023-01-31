@@ -33,7 +33,26 @@ return {
       }
     end,
     cmd = "SessionManager",
-    event = "VeryLazy",
+    event = "VimLeave",
     ft = "alpha",
+  },
+  {
+    "simrat39/symbols-outline.nvim",
+    cmd = "SymbolsOutline",
+    keys = { { "<leader>o", "<cmd>SymbolsOutline<cr>", desc = "Symbols Outline" } },
+    config = true,
+  },
+  {
+    "TimUntersberger/neogit",
+    dependencies = {
+      { "sindrets/diffview.nvim" },
+      { "nvim-lua/plenary.nvim" },
+    },
+    opts = {
+      integrations = {
+        diffview = true,
+      },
+    },
+    cmd = "Neogit",
   },
 }
