@@ -49,6 +49,7 @@ return {
       { "nvim-lua/plenary.nvim" },
     },
     opts = {
+      disable_commit_confirmation = true,
       integrations = {
         diffview = true,
       },
