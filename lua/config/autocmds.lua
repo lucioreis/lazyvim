@@ -40,3 +40,11 @@ vim.api.nvim_create_autocmd("InsertLeavePre", {
 
 local _auto_resize = vim.api.nvim_create_augroup("_auto_resize", { clear = true })
 vim.api.nvim_create_autocmd("VimResized", { command = "tabdo wincmd =", group = _auto_resize })
+
+-- vim.api.nvim_create_autocmd("User", {
+--   pattern = "LazyReload",
+--   callback = function()
+--     require("lazy").sync()
+--   end,
+--   group = _general_settings,
+-- })
