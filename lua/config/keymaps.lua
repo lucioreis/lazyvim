@@ -13,6 +13,28 @@ local function map(mode, lhs, rhs, opts)
 end
 local unmap = vim.keymap.del
 
+--Toggle terminal
+unmap("n", "<leader>fT")
+map("n", "<leader>tt", function()
+  Util.float_term(nil, { cwd = Util.get_root() })
+end, { desc = "Terminal" })
+map("n", "<leader>tT", function()
+  Util.float_term()
+end, { desc = "Terminal (cwd)" })
+map("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
+map("n", "<leader>tn", function()
+  Util.float_term("node", { cwd = Util.get_root() })
+end, { desc = "Node" })
+map("n", "<leader>tb", function()
+  Util.float_term("btop", { cwd = Util.get_root() })
+end, { desc = "BTop" })
+map("n", "<leader>tg", function()
+  Util.float_term("lazygit", { cwd = Util.get_root() })
+end, { desc = "LazyGit" })
+map("n", "<leader>tr", function()
+  Util.float_term("ranger", { cwd = Util.get_root() })
+end, { desc = "Ranger" })
+
 -- lazy
 map("n", "<leader>L", "<cmd>:Lazy<cr>", { desc = "Lazy" })
 -- Press enter to save
