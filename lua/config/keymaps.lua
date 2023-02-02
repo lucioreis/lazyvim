@@ -36,6 +36,7 @@ map("n", "<leader>tr", function()
 end, { desc = "Ranger" })
 
 -- lazy
+unmap("n", "<leader>l")
 map("n", "<leader>L", "<cmd>:Lazy<cr>", { desc = "Lazy" })
 -- Press enter to save
 map("n", "<cr>", "<cmd>w<cr><esc>", { desc = "Save file" })
