@@ -15,6 +15,8 @@ local unmap = vim.keymap.del
 
 --Toggle terminal
 unmap("n", "<leader>fT")
+unmap("n", "<C-B>")
+unmap("n", "<C-F>")
 map("n", "<leader>tt", function()
   Util.float_term(nil, { cwd = Util.get_root() })
 end, { desc = "Terminal" })

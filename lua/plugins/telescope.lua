@@ -11,7 +11,11 @@ return {
       },
       {
         "<leader>ff",
-        function() require("telescope.builtin").find_files() end,
+        function() require("telescope.builtin").find_files({
+             layout_strategy='vertical',
+             layout_config={width=0.5},
+             mode="normal",
+           }) end,
         desc = "Find Files",
       },
 
@@ -63,8 +67,14 @@ return {
         desc = "Search Man Pages"
       },
       {
-        "<leader>bb",
-        function() require("telescope.builtin").buffers({previewer = false}) end,
+        "<leader>bf",
+         function()
+           require("telescope.builtin").buffers({
+             layout_strategy='vertical',
+             layout_config={width=0.5},
+             mode="normal",
+           })
+         end,
         desc = "Find Buffers"
       },
       {
@@ -84,14 +94,57 @@ return {
       },
     },
     -- change some options
-    opts = {
-      defaults = {
-        layout_strategy = "horizontal",
-        layout_config = { prompt_position = "top" },
-        sorting_strategy = "ascending",
-        winblend = 0,
-      },
-    },
+    opts = function(_, opts)
+      local ok, actions = pcall(require, "telescope.actions")
+      if not ok then
+        return opts
+      end
+      opts = vim.tbl_deep_extend("force", opts, {
+        defaults = {
+          layout_strategy = "horizontal",
+          layout_config = { prompt_position = "top" },
+          sorting_strategy = "ascending",
+          winblend = 0,
+          mappings = {
+            i = {
+              ["<C-j>"] = actions.move_selection_next,
+              ["<C-k>"] = actions.move_selection_previous,
+              ["<C-c>"] = actions.close,
+              ["<C-n>"] = actions.cycle_history_next,
+              ["<C-p>"] = actions.cycle_history_prev,
+              ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
+              ["<CR>"] = actions.select_default,
+            },
+            n = {
+              ["q"] = actions.close,
+              ["<C-j>"] = actions.move_selection_next,
+              ["<C-k>"] = actions.move_selection_previous,
+              ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
+            },
+          },
+          path_display = { "smart" },
+          set_env = { ["COLORTERM"] = "truecolor" },
+        },
+        pickers = {
+          live_grep = {
+            --@usage don't include the filename in the search results
+            only_sort_text = true,
+          },
+          buffers = {
+            initial_mode = "normal",
+            mappings = {
+              i = {
+                ["<C-d>"] = actions.delete_buffer,
+              },
+              n = {
+                ["dd"] = actions.delete_buffer,
+              },
+            },
+          },
+        },
+      })
+      return opts
+    end,
   },
 
   {
@@ -102,6 +155,16 @@ return {
       config = function()
         require("telescope").load_extension("fzf")
       end,
+      opts = {
+        extensions = {
+          fzf = {
+            fuzzy = true, -- false will only do exact matching
+            override_generic_sorter = true, -- override the generic sorter
+            override_file_sorter = true, -- override the file sorter
+            case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+          },
+        },
+      },
     },
   },
   {
