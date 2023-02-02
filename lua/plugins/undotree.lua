@@ -4,9 +4,9 @@ return {
   keys = { { "<leader>uu", "<cmd>UndotreeToggle<cr>", mode = "n", desc = "Undotree" } },
   config = function()
     local options = {
-      WindowLayout = 2,
+      WindowLayout = 3,
       ShortIndicators = 1,
-      SplitWidth = 24,
+      SplitWidth = 15,
       DiffpanelHeight = 10,
       DiffAutoOpen = 1,
       SetFocusWhenToggle = 1,
