@@ -40,7 +40,20 @@ local M = {
         { "<leader>la", vim.lsp.buf.code_action, desc = "Code Action", mode = { "n", "v" }, has = "codeAction" }
       keys[#keys + 1] = { "<leader>lf", format, desc = "Format Document", has = "documentFormatting" }
       keys[#keys + 1] = { "<leader>lf", format, desc = "Format Range", mode = "v", has = "documentRangeFormatting" }
-      keys[#keys + 1] = { "<leader>lr", rename, expr = true, desc = "Rename", has = "rename" }
+      if require("lazyvim.util").has("inc-rename.nvim") then
+        keys[#keys + 1] = {
+          "<leader>lr",
+          function()
+            require("inc_rename")
+            return ":IncRename " .. vim.fn.expand("<cword>")
+          end,
+          expr = true,
+          desc = "Rename",
+          has = "rename",
+        }
+      else
+        keys[#keys + 1] = { "<leader>lr", vim.lsp.buf.rename, desc = "Rename", has = "rename" }
+      end
     end,
     opts = {
       -- options for vim.diagnostic.config()
@@ -67,7 +80,7 @@ local M = {
         tsserver = {},
         cssls = {},
         prismals = {},
-        sumneko_lua = {
+        lua_ls = {
           -- mason = false, -- set to false if you don't want this server to be installed with mason
           settings = {
             Lua = {

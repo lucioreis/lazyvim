@@ -1,5 +1,5 @@
 {
-  "LazyVim": { "branch": "main", "commit": "59c32788aee1a6479101e980182666f0fa5ee7f9" },
+  "LazyVim": { "branch": "main", "commit": "2e18998c9ed7d2fa773b782f3aa3c0d5ac5cc21d" },
   "LuaSnip": { "branch": "master", "commit": "58fbfc627a93281a77f7d161d4ff702e639677b1" },
   "SchemaStore.nvim": { "branch": "main", "commit": "b37874a63ceac681a15b83d5c8e67f58fe571341" },
   "alpha-nvim": { "branch": "main", "commit": "1c903fd40b1d51e7740b4d90e9f18e83f2916586" },
@@ -14,6 +14,7 @@
   "gitsigns.nvim": { "branch": "main", "commit": "f29f0b22fd66c910b892aae3bc18a4872c002738" },
   "harpoon": { "branch": "master", "commit": "8c0bb0a328e57278f4783bb0e2ea32f296d36db1" },
   "hop.nvim": { "branch": "master", "commit": "90db1b2c61b820e230599a04fedcd2679e64bd07" },
+  "inc-rename.nvim": { "branch": "main", "commit": "21c23c379342a731a0c90f226601ec0434627b26" },
   "indent-blankline.nvim": { "branch": "master", "commit": "8299fe7703dfff4b1752aeed271c3b95281a952d" },
   "lazy.nvim": { "branch": "main", "commit": "d13fe9353594bce58a5b9fc6d7166d183e0fc035" },
   "lualine.nvim": { "branch": "master", "commit": "0050b308552e45f7128f399886c86afefc3eb988" },

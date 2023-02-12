@@ -174,13 +174,17 @@ return {
       {
         "<leader>fP",
         function()
-          require("telescope").extensions.projects.projects({ previewer = false })
+          require("telescope").extensions.projects.projects({ previewer = false, mode = "normal" })
         end,
         desc = "Projects",
         mode = "n",
       },
     },
-    config = function()
+    opts = {
+      patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json" },
+    },
+    config = function(_, opts)
+      require("project_nvim").setup(opts)
       require("telescope").load_extension("projects")
     end,
   },

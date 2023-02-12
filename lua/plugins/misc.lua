@@ -118,4 +118,8 @@ return {
     },
     opts = { use_default_keymaps = false, max_join_length = 150 },
   },
+  {
+    "smjonas/inc-rename.nvim",
+    config = true,
+  },
 }
