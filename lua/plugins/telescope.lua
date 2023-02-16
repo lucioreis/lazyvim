@@ -188,4 +188,20 @@ return {
       require("telescope").load_extension("projects")
     end,
   },
+  {
+    "nvim-telescope/telescope-file-browser.nvim",
+    dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+    config = function(_, opts)
+      require("telescope").load_extension("file_browser")
+    end,
+    keys = {
+      {
+        "<leader>fB",
+        function()
+          require("telescope").extensions.file_browser.file_browser({ mode = "normal" })
+        end,
+        { desc = "Browse files" },
+      },
+    },
+  },
 }

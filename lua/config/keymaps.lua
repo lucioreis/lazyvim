@@ -33,6 +33,9 @@ end, { desc = "BTop" })
 map("n", "<leader>tg", function()
   Util.float_term("lazygit", { cwd = Util.get_root() })
 end, { desc = "LazyGit" })
+map("n", "<leader>td", function()
+  Util.float_term("lazydocker", { cwd = Util.get_root() })
+end, { desc = "LazyDocker" })
 map("n", "<leader>tr", function()
   Util.float_term("ranger", { cwd = Util.get_root() })
 end, { desc = "Ranger" })
@@ -45,13 +48,14 @@ map("n", "<cr>", "<cmd>w<cr><esc>", { desc = "Save file" })
 
 map("n", "=", "<cmd>Neotree buffers reveal toggle float<cr>", { desc = "Neotree buffers" })
 map("n", "-", "<cmd>Neotree git_status reveal_force_cwd toggle float<cr>", { desc = "Neotree git status" })
-map("n", "<leader>e", "<cmd>Neotree filesystem reveal_force_cwd toggle left<cr>", { desc = "Neotree" })
+map("n", "<leader>e", "<cmd>Neotree filesystem reveal_force_cwd left toggle<cr>", { desc = "Neotree" })
 map(
   "n",
   "0",
   "<cmd>Neotree filesystem reveal_force_cwd toggle float<cr>",
   { desc = "Neotree show files in a floating window" }
 )
+map("n", "<Space>ur", "<Cmd>nohlsearch|diffupdate|normal! <C-L><CR>", { desc = "No highlight" })
 map("n", "n", "nzzzv", { desc = "Next result" })
 map("n", "N", "Nzzzv", { desc = "Prev result" })
 map("n", "gx", [[:silent execute '!$BROWSER ' . shellescape(expand('<cfile>'), 1)<CR>]], { desc = "Open on browser" })

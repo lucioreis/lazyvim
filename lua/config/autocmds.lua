@@ -3,6 +3,13 @@
 -- Add any additional autocmds here
 
 local _general_settings = vim.api.nvim_create_augroup("_general_settings", { clear = true })
+-- Disable autoformat for lua files
+-- vim.api.nvim_create_autocmd({ "FileType" }, {
+--   pattern = { "lua", "typescriptreact" },
+--   callback = function()
+--     vim.b.autoformat = false
+--   end,
+-- })
 
 vim.api.nvim_create_autocmd("FileType", {
   pattern = {
