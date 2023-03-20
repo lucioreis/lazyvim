@@ -26,8 +26,10 @@ return {
       },
       {
         "<leader>ft",
-        function() require("telescope.builtin").live_grep(
-          require("telescope.themes").get_ivy({winblend = 10})
+        function()
+          vim.keymap.del("n", "<leader>ft")
+          require("telescope.builtin").live_grep(
+            require("telescope.themes").get_ivy({winblend = 10})
         ) end,
         desc = "Find Text",
       },
@@ -200,7 +202,8 @@ return {
         function()
           require("telescope").extensions.file_browser.file_browser({ mode = "normal" })
         end,
-        { desc = "Browse files" },
+        desc = "Browse files",
+        mode = "n",
       },
     },
   },
