@@ -55,3 +55,17 @@ vim.api.nvim_create_autocmd("VimResized", { command = "tabdo wincmd =", group = 
 --   end,
 --   group = _general_settings,
 -- })
+--
+--
+-- local _typescript = vim.api.nvim_create_augroup("_typescript", { clear = true })
+--
+-- vim.api.nvim_create_autocmd("FileType", {
+--   pattern = {"typescript", "typescriptreact"},
+--   callback = function()
+--     vim.keymap.set("n","<leader>lI", "<CMD>TypescriptOrganizeImports<CR>", {desc = "Organize imports"} )
+--     vim.keymap.set("n","<leader>lu", "<CMD>TypescriptRemoveUnused<CR>", {desc = "Remove unused"} )
+--     vim.keymap.set("n","<leader>lm", "<CMD>TypescriptAddMissingImports<CR>", {desc = "Add missing imports"} )
+--     vim.keymap.set("n","<leader>ld", "<CMD>TypescriptGoToSourceDefinition<CR>", {desc = "Add missing imports"} )
+--   end,
+--   group = _typescript,
+-- })

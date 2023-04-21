@@ -1,4 +1,9 @@
 return {
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    lazy = false,
+  },
   { "shaunsingh/oxocarbon.nvim", enabled = false },
   { "ellisonleao/gruvbox.nvim", enabled = false },
   { "rose-pine/neovim", name = "rose-pine" },
@@ -8,7 +13,7 @@ return {
     priority = 1000,
     opts = function()
       return {
-        style = "moon",
+        style = "night",
         transparent = false,
         -- styles = {
         --   sidebars = "transparent",

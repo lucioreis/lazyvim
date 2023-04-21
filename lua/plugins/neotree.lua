@@ -95,7 +95,7 @@ return {
       highlight_separator_active = "NeoTreeTabSeparatorActive",
     },
     --
-    --event_handlers = {
+    event_handlers = {
     --  {
     --    event = "before_render",
     --    handler = function (state)
@@ -130,12 +130,12 @@ return {
     --      print(args.source, " moved to ", args.destination)
     --    end
     --  },
-    --  {
-    --    event = "neo_tree_buffer_enter",
-    --    handler = function()
-    --      vim.cmd 'highlight! Cursor blend=100'
-    --    end
-    --  },
+     -- {
+     --   event = "neo_tree_buffer_enter",
+     --   handler = function()
+     --     vim.cmd 'highlight! Cursor blend=100'
+     --   end
+     -- },
     --  {
     --    event = "neo_tree_buffer_leave",
     --    handler = function()
@@ -166,7 +166,7 @@ return {
     --     vim.cmd("wincmd =")
     --   end
     -- }
-    --},
+    },
     default_component_configs = {
       container = {
         enable_character_fade = true,
@@ -449,7 +449,7 @@ return {
       --end,
       group_empty_dirs = false, -- when true, empty folders will be grouped together
       search_limit = 50, -- max number of search results when using filters
-      follow_current_file = false, -- This will find and focus the file in the active buffer every time
+      follow_current_file = true, -- This will find and focus the file in the active buffer every time
       -- the current file is changed while the tree is open.
       hijack_netrw_behavior = "open_default", -- netrw disabled, opening a directory opens neo-tree
       -- in whatever position is specified in window.position
@@ -460,10 +460,10 @@ return {
       -- instead of relying on nvim autocmd events.
     },
     buffers = {
-      bind_to_cwd = true,
+      bind_to_cwd = false,
       follow_current_file = true, -- This will find and focus the file in the active buffer every time
       -- the current file is changed while the tree is open.
-      group_empty_dirs = true, -- when true, empty directories will be grouped together
+      group_empty_dirs = false, -- when true, empty directories will be grouped together
       window = {
         mappings = {
           ["<bs>"] = "navigate_up",

@@ -3,6 +3,18 @@ return {
   { "ggandor/leap.nvim", enabled = false },
   { "akinsho/bufferline.nvim", enabled = false },
   { "windwp/nvim-spectre", enabled = false },
+  { "echasnovski/mini.surround", enabled = false },
+  { "sigmasd/deno-nvim", lazy = false, enabled = false },
+  {
+    "kylechui/nvim-surround",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    config = function()
+      require("nvim-surround").setup({
+        -- Configuration here, or leave empty to use defaults
+      })
+    end,
+  },
 
   -- add jsonls and schemastore ans setup treesitter for json, json5 and jsonc
   { import = "lazyvim.plugins.extras.lang.json" },
