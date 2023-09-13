@@ -18,7 +18,7 @@ return {
               }),
               nls.builtins.code_actions.eslint_d,
               nls.builtins.diagnostics.flake8,
-              -- require("typescript.extensions.null-ls.code-actions"),
+              require("typescript.extensions.null-ls.code-actions"),
           },
       }
     end,

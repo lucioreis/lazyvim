@@ -52,7 +52,6 @@ local M = {
         jsonls = {},
         tailwindcss = {},
         tsserver = {
-          cmd = { "typescript-language-server", "--stdio" },
           settings = {
             watchOptions = {
               watchFile = "dynamicPriorityPolling",

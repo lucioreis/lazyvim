@@ -14,6 +14,7 @@ return {
   {
     "mfussenegger/nvim-treehopper",
     keys = { { "m", mode = { "o", "x" } } },
+    enabled = false,
     config = function()
       vim.cmd([[
         omap     <silent> m :<C-U>lua require('tsht').nodes()<CR>
@@ -21,11 +22,36 @@ return {
       ]])
     end,
   },
-
   {
     "nvim-treesitter/nvim-treesitter-context",
-    event = "BufReadPre",
     config = true,
+  },
+  {
+    "HiPhish/rainbow-delimiters.nvim",
+    config = function()
+      local rainbow_delimiters = require("rainbow-delimiters")
+      vim.g.rainbow_delimiters = {
+        strategy = {
+          [""] = rainbow_delimiters.strategy["global"],
+          vim = rainbow_delimiters.strategy["local"],
+          html = rainbow_delimiters.strategy["local"],
+        },
+        query = {
+          [""] = "rainbow-delimiters",
+          lua = "rainbow-blocks",
+          tsx = "rainbow-parens",
+        },
+        highlight = {
+          "RainbowDelimiterRed",
+          "RainbowDelimiterYellow",
+          "RainbowDelimiterBlue",
+          "RainbowDelimiterOrange",
+          "RainbowDelimiterGreen",
+          "RainbowDelimiterViolet",
+          "RainbowDelimiterCyan",
+        },
+      }
+    end,
   },
   {
     "nvim-treesitter/nvim-treesitter",
@@ -45,7 +71,10 @@ return {
         },
       },
       indent = { enable = true, disable = { "yaml", "python" } },
-      autotag = { enable = true },
+      autotag = {
+        enable = true,
+        enable_close_on_slash = false,
+      },
       matchup = {
         enable = true, -- mandatory, false will disable the whole extension
         disable = { "c", "ruby" }, -- optional, list of language that will be disabled
@@ -116,13 +145,6 @@ return {
           goto_node = "<cr>",
           show_help = "?",
         },
-      },
-      rainbow = {
-        enable = true,
-        extended_mode = false, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
-        disable = { "jsx", "html", "typescriptreact" }, -- list of languages you want to disable the plugin for
-        max_file_lines = nil, -- Do not enable for files with more than n lines, int
-        colors = { "#ff0000", "#ffa500", "#ffff00", "#76ff03", "#0000ff", "#fa0786", "#ee82ee" }, -- table of hex strings
       },
     },
   },

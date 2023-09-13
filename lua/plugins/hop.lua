@@ -1,5 +1,9 @@
-return {
+local M = {
   "phaazon/hop.nvim",
-  keys = { { "s", "<cmd>HopWord<cr>", mode = "n", desc = "HopWord" } },
-  config = true,
+  branch = "v2",
+  keys = { { "s","<CMD>HopWord<CR>", mode = {"n", "v"}, desc = "HopWord" } },
+  config = function()
+    require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+  end,
 }
+return M
