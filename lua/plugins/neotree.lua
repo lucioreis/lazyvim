@@ -22,7 +22,6 @@ return {
     -- popup_border_style is for input and confirmation dialogs.
     -- Configurtaion of floating window is done in the individual source sections.
     -- "NC" is a special style that works well with NormalNC set
-    close_floats_on_escape_key = true,
     default_source = "filesystem",
     enable_diagnostics = true,
     enable_git_status = true,
@@ -56,7 +55,7 @@ return {
       statusline = true, -- toggle to show selector on statusline
       show_scrolled_off_parent_node = false, -- this will replace the tabs with the parent path
       -- of the top visible node when scrolled down.
-      tab_labels = { -- falls back to source_name if nil
+      sources = { -- falls back to source_name if nil
         filesystem = "  Files ",
         buffers = "  Buffers ",
         git_status = "  Git ",
@@ -96,76 +95,76 @@ return {
     },
     --
     event_handlers = {
-    --  {
-    --    event = "before_render",
-    --    handler = function (state)
-    --      -- add something to the state that can be used by custom components
-    --    end
-    --  },
-    --  {
-    --    event = "file_opened",
-    --    handler = function(file_path)
-    --      --auto close
-    --      require("neo-tree").close_all()
-    --    end
-    --  },
-    --  {
-    --    event = "file_opened",
-    --    handler = function(file_path)
-    --      --clear search after opening a file
-    --      require("neo-tree.sources.filesystem").reset_search()
-    --    end
-    --  },
-    --  {
-    --    event = "file_renamed",
-    --    handler = function(args)
-    --      -- fix references to file
-    --      print(args.source, " renamed to ", args.destination)
-    --    end
-    --  },
-    --  {
-    --    event = "file_moved",
-    --    handler = function(args)
-    --      -- fix references to file
-    --      print(args.source, " moved to ", args.destination)
-    --    end
-    --  },
-     -- {
-     --   event = "neo_tree_buffer_enter",
-     --   handler = function()
-     --     vim.cmd 'highlight! Cursor blend=100'
-     --   end
-     -- },
-    --  {
-    --    event = "neo_tree_buffer_leave",
-    --    handler = function()
-    --      vim.cmd 'highlight! Cursor guibg=#5f87af blend=0'
-    --    end
-    --  },
-    -- {
-    --   event = "neo_tree_window_before_open",
-    --   handler = function(args)
-    --     print("neo_tree_window_before_open", vim.inspect(args))
-    --   end
-    -- },
-    -- {
-    --   event = "neo_tree_window_after_open",
-    --   handler = function(args)
-    --     vim.cmd("wincmd =")
-    --   end
-    -- },
-    -- {
-    --   event = "neo_tree_window_before_close",
-    --   handler = function(args)
-    --     print("neo_tree_window_before_close", vim.inspect(args))
-    --   end
-    -- },
-    -- {
-    --   event = "neo_tree_window_after_close",
-    --   handler = function(args)
-    --     vim.cmd("wincmd =")
-    --   end
-    -- }
+      --  {
+      --    event = "before_render",
+      --    handler = function (state)
+      --      -- add something to the state that can be used by custom components
+      --    end
+      --  },
+      --  {
+      --    event = "file_opened",
+      --    handler = function(file_path)
+      --      --auto close
+      --      require("neo-tree").close_all()
+      --    end
+      --  },
+      --  {
+      --    event = "file_opened",
+      --    handler = function(file_path)
+      --      --clear search after opening a file
+      --      require("neo-tree.sources.filesystem").reset_search()
+      --    end
+      --  },
+      --  {
+      --    event = "file_renamed",
+      --    handler = function(args)
+      --      -- fix references to file
+      --      print(args.source, " renamed to ", args.destination)
+      --    end
+      --  },
+      --  {
+      --    event = "file_moved",
+      --    handler = function(args)
+      --      -- fix references to file
+      --      print(args.source, " moved to ", args.destination)
+      --    end
+      --  },
+      -- {
+      --   event = "neo_tree_buffer_enter",
+      --   handler = function()
+      --     vim.cmd 'highlight! Cursor blend=100'
+      --   end
+      -- },
+      --  {
+      --    event = "neo_tree_buffer_leave",
+      --    handler = function()
+      --      vim.cmd 'highlight! Cursor guibg=#5f87af blend=0'
+      --    end
+      --  },
+      -- {
+      --   event = "neo_tree_window_before_open",
+      --   handler = function(args)
+      --     print("neo_tree_window_before_open", vim.inspect(args))
+      --   end
+      -- },
+      -- {
+      --   event = "neo_tree_window_after_open",
+      --   handler = function(args)
+      --     vim.cmd("wincmd =")
+      --   end
+      -- },
+      -- {
+      --   event = "neo_tree_window_before_close",
+      --   handler = function(args)
+      --     print("neo_tree_window_before_close", vim.inspect(args))
+      --   end
+      -- },
+      -- {
+      --   event = "neo_tree_window_after_close",
+      --   handler = function(args)
+      --     vim.cmd("wincmd =")
+      --   end
+      -- }
     },
     default_component_configs = {
       container = {
@@ -449,7 +448,7 @@ return {
       --end,
       group_empty_dirs = false, -- when true, empty folders will be grouped together
       search_limit = 50, -- max number of search results when using filters
-      follow_current_file = true, -- This will find and focus the file in the active buffer every time
+      follow_current_file = { enabled = true }, -- This will find and focus the file in the active buffer every time
       -- the current file is changed while the tree is open.
       hijack_netrw_behavior = "open_default", -- netrw disabled, opening a directory opens neo-tree
       -- in whatever position is specified in window.position
@@ -461,7 +460,7 @@ return {
     },
     buffers = {
       bind_to_cwd = false,
-      follow_current_file = true, -- This will find and focus the file in the active buffer every time
+      follow_current_file = { enabled = true }, -- This will find and focus the file in the active buffer every time
       -- the current file is changed while the tree is open.
       group_empty_dirs = false, -- when true, empty directories will be grouped together
       window = {

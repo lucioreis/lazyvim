@@ -2,7 +2,7 @@ return {
   { "ggandor/flit.nvim", enabled = false },
   { "ggandor/leap.nvim", enabled = false },
   { "akinsho/bufferline.nvim", enabled = false },
-  { "windwp/nvim-spectre", enabled = false },
+  { "nvim-pack/nvim-spectre", enabled = false },
   { "echasnovski/mini.surround", enabled = false },
   { "sigmasd/deno-nvim", lazy = false, enabled = false },
   { "folke/flash.nvim", enabled = false },

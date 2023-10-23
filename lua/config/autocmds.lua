@@ -38,6 +38,7 @@ vim.api.nvim_create_autocmd("InsertEnter", {
   group = _general_settings,
 })
 
+
 vim.api.nvim_create_autocmd("InsertLeavePre", {
   callback = function()
     vim.opt.relativenumber = true

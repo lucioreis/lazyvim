@@ -38,7 +38,7 @@ local M = {
         severity_sort = true,
       },
       -- Automatically format on save
-      autoformat = false,
+      autoformat = nil, --Deprecated
       -- options for vim.lsp.buf.format
       -- `bufnr` and `filter` is handled by the LazyVim formatter,
       -- but can be also overriden when specified
@@ -88,22 +88,17 @@ local M = {
         -- end,
         -- Specify * to use this function as a fallback for any server
         -- ["*"] = function(server, opts) end,
-        tsserver = function(_, opts)
-          require("typescript").setup({ server = opts })
-          return true
-        end,
       },
     },
     init = function()
-      local format = require("lazyvim.plugins.lsp.format").format
-      local rename = require("lazyvim.plugins.lsp.keymaps").rename
+      local format = require("lazyvim.util").format
       local keys = require("lazyvim.plugins.lsp.keymaps").get()
       -- change a keymap
       -- keys[#keys + 1] = { "K", false }
       -- keys[#keys + 1] = { "K", "<cmd>echo 'hello'<cr>" }
       -- disable a keymap
       -- add a keymap
-      -- keys[#keys + 1] = { "H", "<cmd>echo 'hello'<cr>" }
+      keys[#keys + 1] = { "H", "<cmd>echo 'hello'<cr>" }
       keys[#keys + 1] = { "gl", vim.diagnostic.open_float, desc = "Line Diagnostics" }
       keys[#keys + 1] = { "<leader>li", "<cmd>LspInfo<cr>", desc = "Lsp Info" }
       keys[#keys + 1] = { "gd", "<cmd>Trouble lsp_definitions<cr>", desc = "Goto Definition" }
@@ -117,8 +112,9 @@ local M = {
         { "<c-k>", vim.lsp.buf.signature_help, mode = "i", desc = "Signature Help", has = "signatureHelp" }
       keys[#keys + 1] =
         { "<leader>la", vim.lsp.buf.code_action, desc = "Code Action", mode = { "n", "v" }, has = "codeAction" }
-      keys[#keys + 1] = { "<leader>lf", format, desc = "Format Document", has = "documentFormatting" }
-      keys[#keys + 1] = { "<leader>lf", format, desc = "Format Range", mode = "v", has = "documentRangeFormatting" }
+      -- keys[#keys + 1] =
+      -- { "<leader>lf", require("lazyvim.util").format, desc = "Format Document", has = "documentFormatting" }
+      -- keys[#keys + 1] = { "<leader>lf", format, desc = "Format Range", mode = "v", has = "documentRangeFormatting" }
       keys[#keys + 1] = { "<leader>lR", "<cmd>LspRestart<cr>", desc = "Restart LSP", mode = "n" }
       if require("lazyvim.util").has("inc-rename.nvim") then
         keys[#keys + 1] = {
