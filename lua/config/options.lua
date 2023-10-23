@@ -77,3 +77,4 @@ vim.filetype.add({
     ["[jt]sconfig.*.json"] = "jsonc",
   },
 })
+vim.g.autoformat = false

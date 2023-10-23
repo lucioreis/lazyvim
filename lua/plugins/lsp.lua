@@ -110,26 +110,10 @@ local M = {
       keys[#keys + 1] = { "gK", vim.lsp.buf.signature_help, desc = "Signature Help", has = "signatureHelp" }
       keys[#keys + 1] =
         { "<c-k>", vim.lsp.buf.signature_help, mode = "i", desc = "Signature Help", has = "signatureHelp" }
-      keys[#keys + 1] =
-        { "<leader>la", vim.lsp.buf.code_action, desc = "Code Action", mode = { "n", "v" }, has = "codeAction" }
       -- keys[#keys + 1] =
       -- { "<leader>lf", require("lazyvim.util").format, desc = "Format Document", has = "documentFormatting" }
       -- keys[#keys + 1] = { "<leader>lf", format, desc = "Format Range", mode = "v", has = "documentRangeFormatting" }
-      keys[#keys + 1] = { "<leader>lR", "<cmd>LspRestart<cr>", desc = "Restart LSP", mode = "n" }
-      if require("lazyvim.util").has("inc-rename.nvim") then
-        keys[#keys + 1] = {
-          "<leader>lr",
-          function()
-            require("inc_rename")
-            return ":IncRename " .. vim.fn.expand("<cword>")
-          end,
-          expr = true,
-          desc = "Rename",
-          has = "rename",
-        }
-      else
-        keys[#keys + 1] = { "<leader>lr", vim.lsp.buf.rename, desc = "Rename", has = "rename" }
-      end
+      keys[#keys + 1] = { "<leader>cR", "<cmd>LspRestart<cr>", desc = "Restart LSP", mode = "n" }
     end,
   },
 }
