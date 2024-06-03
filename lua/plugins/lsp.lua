@@ -107,6 +107,7 @@ local M = {
       keys[#keys + 1] = { "gI", "<cmd>Trouble lsp_implementations<cr>", desc = "Goto Implementation" }
       keys[#keys + 1] = { "gt", "<cmd>Trouble lsp_type_definitions<cr>", desc = "Goto Type Definition" }
       keys[#keys + 1] = { "K", vim.lsp.buf.hover, desc = "Hover" }
+      keys[#keys + 1] = { "<leader>k", require("pretty_hover").hover, desc = "Pretty Hover" }
       keys[#keys + 1] = { "gK", vim.lsp.buf.signature_help, desc = "Signature Help", has = "signatureHelp" }
       keys[#keys + 1] =
         { "<c-k>", vim.lsp.buf.signature_help, mode = "i", desc = "Signature Help", has = "signatureHelp" }
@@ -115,6 +116,13 @@ local M = {
       -- keys[#keys + 1] = { "<leader>lf", format, desc = "Format Range", mode = "v", has = "documentRangeFormatting" }
       keys[#keys + 1] = { "<leader>cR", "<cmd>LspRestart<cr>", desc = "Restart LSP", mode = "n" }
     end,
+  },
+  {
+    "Fildo7525/pretty_hover",
+    event = "LspAttach",
+    opts = {
+         border = "none"
+      },
   },
 }
 
