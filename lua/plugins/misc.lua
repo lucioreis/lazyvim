@@ -6,6 +6,7 @@ return {
   { "echasnovski/mini.surround", enabled = false },
   { "sigmasd/deno-nvim", lazy = false, enabled = false },
   { "folke/flash.nvim", enabled = false },
+   {"stevearc/aerial.nvim", enabled = false},
   {
     "kylechui/nvim-surround",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
