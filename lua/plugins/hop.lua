@@ -11,14 +11,6 @@ local M = {
       desc = "HopWord",
     },
     {
-      "x",
-      function()
-        require("hop").hint_char2()
-      end,
-      mode = { "n", "v" },
-      desc = "HopChar2",
-    },
-    {
       "f",
       function()
         require("hop").hint_char1({
