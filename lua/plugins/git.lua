@@ -2,8 +2,10 @@ return {
   {
     "NeogitOrg/neogit",
     dependencies = {
-      { "sindrets/diffview.nvim" },
-      { "nvim-lua/plenary.nvim" },
+      "sindrets/diffview.nvim",
+      "nvim-telescope/telescope.nvim",
+      "ibhagwan/fzf-lua",
+      "nvim-lua/plenary.nvim",
     },
     keys = { { "<leader>gn", "<cmd>Neogit<cr>", desc = "Neogit" } },
     opts = {

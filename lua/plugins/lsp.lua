@@ -46,6 +46,7 @@ local M = {
         formatting_options = nil,
         timeout_ms = nil,
       },
+      inlay_hints = { enabled = false },
       -- LSP Server Settings
       ---@type lspconfig.options
       servers = {
@@ -59,6 +60,7 @@ local M = {
           },
         },
         cssls = {},
+        gopls = {},
         prismals = {},
         lua_ls = {
           -- mason = false, -- set to false if you don't want this server to be installed with mason
@@ -121,8 +123,8 @@ local M = {
     "Fildo7525/pretty_hover",
     event = "LspAttach",
     opts = {
-         border = "none"
-      },
+      border = nil,
+    },
   },
 }
 
