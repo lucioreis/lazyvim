@@ -38,7 +38,6 @@ vim.api.nvim_create_autocmd("InsertEnter", {
   group = _general_settings,
 })
 
-
 vim.api.nvim_create_autocmd("InsertLeavePre", {
   callback = function()
     vim.opt.relativenumber = true
@@ -49,6 +48,13 @@ vim.api.nvim_create_autocmd("InsertLeavePre", {
 local _auto_resize = vim.api.nvim_create_augroup("_auto_resize", { clear = true })
 vim.api.nvim_create_autocmd("VimResized", { command = "tabdo wincmd =", group = _auto_resize })
 
+vim.api.nvim_create_autocmd("TextYankPost", {
+  desc = "Highlight text on yank",
+  group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+})
 -- vim.api.nvim_create_autocmd("User", {
 --   pattern = "LazyReload",
 --   callback = function()
